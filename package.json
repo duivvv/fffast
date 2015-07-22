@@ -1,8 +1,8 @@
 {
   "name": "fffast",
   "version": "0.1.0",
-  "description": "",
-  "main": "index.js",
+  "description": "fffast basic ES6 and postcss experimentation folder without all the node_modules hassle",
+  "main": "./src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
