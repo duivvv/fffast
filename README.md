@@ -12,20 +12,20 @@ With [npm](http://npmjs.org) do:
 
 ```bash
 
-Usage: fffast - fffast, quick CSS/JS experimentation folder
+Usage: fffast / create a quick css/js experimentation folder
 
 $ fffast {command}
 
 
 Commands:
 
-  init|i  copy folders and files into current folder
+  init|i   copy folders and files into current folder
 
 Options:
 
   -h, --help         output usage information
   -V, --version      output the version number
-  -p, --port <port>  port to use on localhost
+  -p, --port <port>  server port
 
 
 ```
@@ -72,13 +72,12 @@ command in the folder to make **the magic** happen
 
 
 You can also use it for [React](https://github.com/facebook/react) experiments (use [cdnjs](https://cdnjs.com/libraries/react/))
-(added [React](https://github.com/facebook/react) to [externals](http://webpack.github.io/docs/library-and-externals.html) in [webpack](https://github.com/webpack/webpack))
+<br/>(added [React](https://github.com/facebook/react) to [externals](http://webpack.github.io/docs/library-and-externals.html) in [webpack](https://github.com/webpack/webpack))
 
 ### JS
 
 [ES6](http://exploringjs.com/) and beyond with [Babel](https://github.com/babel/babel) + [ESLint](https://github.com/eslint/eslint)
-
-(stage 0 is enabled)
+<br/>(stage 0 is enabled)
 
 ### CSS
 

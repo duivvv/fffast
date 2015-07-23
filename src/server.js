@@ -1,33 +1,32 @@
-var args = process.argv.slice(2);
-
-var remote_folder = args[0];
-var port = args[1];
-
 var path = require('path');
-
-var spawn = require('child_process').spawn;
-
-var Logger = require('./lib/Logger');
 
 var express = require('express');
 var app = express();
 var compression = require('compression');
 
-app.use(express.static(remote_folder));
+var args = process.argv.slice(2);
+
+var static = args[0];
+var port = args[1];
+
+var spawn = require('child_process').spawn;
+var Logger = require('./lib/Logger');
+
+app.use(express.static(static));
 app.use(compression())
 
 process.on('uncaughtException', function(err){
-  if(err) close();
+  if(err) _close();
 })
 
-function close(){
+function _close(){
   var close = spawn('pkill', ['node'], {stdio: 'ignore'});
   close.on('close', function(){
-    init();
+    _init();
   });
 }
 
-function init(){
+function _init(){
   app.listen(port, function(err){
     console.log('\r');
     Logger.message('server running at http://localhost:' + port);
@@ -35,4 +34,4 @@ function init(){
   });
 }
 
-init()
+_init()
