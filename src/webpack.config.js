@@ -3,8 +3,6 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var path = require('path');
 
-console.log(__dirname);
-
 var postcss_plugins = [
   require('autoprefixer-core')({
     browsers: ['IE >= 9', 'last 2 version'],
@@ -17,7 +15,7 @@ var postcss_plugins = [
   require('postcss-nested')
 ];
 
-module.exports = {
+var settings = {
   devtool: 'eval',
   module: {
     loaders: [
@@ -42,7 +40,6 @@ module.exports = {
   },
   plugins: [
     new ExtractTextPlugin('../css/screen.css'),
-    //new webpack.optimize.CommonsChunkPlugin('vendor', '/js/vendor.js')
   ],
   postcss: function(){
     return postcss_plugins;
@@ -63,3 +60,6 @@ module.exports = {
     extensions: ['', '.json', '.js', '.css']
   }
 };
+
+
+module.exports = settings;

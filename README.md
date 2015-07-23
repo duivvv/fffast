@@ -8,30 +8,46 @@ With [npm](http://npmjs.org) do:
 
     npm install -g fffast
 
-## Usage
+## usage
 
-`fffast -i <foldername>` 
+```bash
 
-creates a folder with following structure:
+Usage: fffast - fffast, quick CSS/JS experimentation folder
+
+$ fffast {command}
+
+
+Commands:
+
+  init|i  copy folders and files into current folder
+
+Options:
+
+  -h, --help         output usage information
+  -V, --version      output the version number
+  -p, --port <port>  port to use on localhost
+
+
+```
+
+`fffast init` creates following folders/files:
 
 ```
 /_js
   app.js
-  
+
 /_css
   reset.css
   mixins.css
   screen.css
 
-/js 
+/js
 /css
 
 index.html
 ```
 
-or create the same structure 
-
-only 
+only
 
 - **_js/app.js**
 - **_css/screen.css**
@@ -39,11 +55,11 @@ only
 
 are required, the rest is optional
 
-navigate into the folder and use 
+run the
 
-`ffast` 
+`ffast`
 
-to make **the magic** happen
+command in the folder to make **the magic** happen
 
 
 
@@ -55,7 +71,6 @@ to make **the magic** happen
 4. **builds** the **CSS** with [PostCSS](https://github.com/postcss/postcss) (see below)
 
 
-
 You can also use it for [React](https://github.com/facebook/react) experiments (use [cdnjs](https://cdnjs.com/libraries/react/))
 (added [React](https://github.com/facebook/react) to [externals](http://webpack.github.io/docs/library-and-externals.html) in [webpack](https://github.com/webpack/webpack))
 
@@ -65,7 +80,7 @@ You can also use it for [React](https://github.com/facebook/react) experiments (
 
 (stage 0 is enabled)
 
-### CSS 
+### CSS
 
 [PostCSS](https://github.com/postcss/postcss) transforms with following plugins
 
@@ -78,5 +93,5 @@ You can also use it for [React](https://github.com/facebook/react) experiments (
 ## TODO
 
 - override files (own .eslintrc for example)
-- turn off linting
+- turn off [ESLint](https://github.com/eslint/eslint)
 - extra node_modules installation (add folder to modules in webpack.config)
