@@ -31,7 +31,8 @@ function _webpackArgs(module_folder){
 
   var args = [];
 
-  var src = path.join(process.cwd(), '_js', 'app.js');
+  //var src = path.join(process.cwd(), '_js', 'app.js');
+  var src = path.join(module_folder, 'start.js');
   var dest = path.join(process.cwd(), 'js', 'app.js');
 
   args.push(src);

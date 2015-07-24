@@ -3,6 +3,15 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var path = require('path');
 
+var args = process.argv.slice(2);
+
+var remote_folder = args[1].split('/js/app.js')[0];
+
+var app_js =  path.join(remote_folder, '/_js/app.js');
+var screen_css = path.join(remote_folder, '/_css/screen.css');
+
+var path = require('path');
+
 var postcss_plugins = [
   require('autoprefixer-core')({
     browsers: ['IE >= 9', 'last 2 version'],
@@ -55,7 +64,8 @@ var settings = {
   },
   resolve: {
     alias: {
-      'babel-core': path.join(__dirname, '../node_modules/babel-core/')
+      'app': app_js,
+      'screen': screen_css,
     },
     extensions: ['', '.json', '.js', '.css']
   }

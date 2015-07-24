@@ -61,8 +61,6 @@ run the
 
 command in the folder to make **the magic** happen
 
-
-
 ## The Magic?
 
 1. **fffast** serves this folder as a **static directory** on [http://localhost:3000](http://localhost:3000) using [Express](https://github.com/strongloop/express)
@@ -70,6 +68,7 @@ command in the folder to make **the magic** happen
 3. **builds** the **JavaScript** with [Babel](https://github.com/babel/babel) and **lints** the files with [ESLint](https://github.com/eslint/eslint) (see below)
 4. **builds** the **CSS** with [PostCSS](https://github.com/postcss/postcss) (see below)
 
+[babel-core/polyfill](https://babeljs.io/docs/usage/polyfill/) & [whatwg-fetch](https://github.com/github/fetch) are already loaded, have fun.
 
 You can also use it for [React](https://github.com/facebook/react) experiments (use [cdnjs](https://cdnjs.com/libraries/react/))
 <br/>(added [React](https://github.com/facebook/react) to [externals](http://webpack.github.io/docs/library-and-externals.html) in [webpack](https://github.com/webpack/webpack))

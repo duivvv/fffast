@@ -1,6 +1,6 @@
 {
   "name": "fffast",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "fffast basic ES6 and postcss experimentation folder without all the node_modules hassle",
   "main": "./src/lib/index.js",
   "scripts": {
@@ -26,6 +26,7 @@
     "express": "^4.13.1",
     "extract-text-webpack-plugin": "^0.8.2",
     "fs-extra": "^0.22.1",
+    "imports-loader": "^0.6.4",
     "mkdirp": "^0.5.1",
     "node-libs-browser": "^0.5.2",
     "postcss-custom-properties": "^4.2.0",
@@ -35,6 +36,7 @@
     "postcss-nested": "^0.3.2",
     "postcss-simple-vars": "^0.3.0",
     "style-loader": "^0.12.3",
-    "webpack": "^1.10.3"
+    "webpack": "^1.10.3",
+    "whatwg-fetch": "^0.9.0"
   }
 }
