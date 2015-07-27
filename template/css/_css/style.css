@@ -1,4 +1,2 @@
 @import 'reset';
 @import 'mixins';
-
-@mixin border-box-default;

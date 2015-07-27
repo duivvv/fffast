@@ -3,5 +3,5 @@
 import 'babel-core/polyfill';
 import 'whatwg-fetch';
 
-import 'screen';
-import 'app';
+import 'css';
+import 'js';

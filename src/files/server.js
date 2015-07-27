@@ -4,32 +4,28 @@ var express = require('express');
 var app = express();
 var compression = require('compression');
 
-var args = process.argv.slice(2);
+var ArgumentsParser = require('../lib/utils/ArgumentsParser');
+ArgumentsParser.init(process.argv);
 
-var static = args[0];
-var port = args[1];
+var static = ArgumentsParser.getById(0);
+var port = ArgumentsParser.getById(1);
 
 var spawn = require('child_process').spawn;
-var Logger = require('./lib/Logger');
+var Logger = require('../lib/utils/Logger');
 
 app.use(express.static(static));
 app.use(compression())
 
 process.on('uncaughtException', function(err){
-  if(err) _close();
-})
-
-function _close(){
-  var close = spawn('pkill', ['node'], {stdio: 'ignore'});
-  close.on('close', function(){
-    _init();
-  });
-}
+  if(err.errno === 'EADDRINUSE'){
+    Logger.close('server already running on http://localhost:' + port + ', exiting');
+  }
+});
 
 function _init(){
   app.listen(port, function(err){
     console.log('\r');
-    Logger.message('server running at http://localhost:' + port);
+    Logger.server(port);
     console.log('\r');
   });
 }

@@ -1,15 +1,19 @@
 {
   "name": "fffast",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "fffast basic ES6 and postcss experimentation folder without all the node_modules hassle",
-  "main": "./src/lib/index.js",
+  "main": "./src/fffast.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Geoffrey Dhuyvetters <geoffrey.dhuyvetters@gmail.com> (http://landlocked.herokuapp.com/)",
   "license": "MIT",
   "bin": {
-    "fffast": "./src/lib/index.js"
+    "fffast": "./src/fffast.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/duivvv/fffast"
   },
   "dependencies": {
     "autoprefixer-core": "^5.2.1",
@@ -27,14 +31,18 @@
     "extract-text-webpack-plugin": "^0.8.2",
     "fs-extra": "^0.22.1",
     "imports-loader": "^0.6.4",
+    "less": "^2.5.1",
+    "less-loader": "^2.2.0",
     "mkdirp": "^0.5.1",
     "node-libs-browser": "^0.5.2",
+    "node-sass": "^3.2.0",
     "postcss-custom-properties": "^4.2.0",
     "postcss-import": "^6.2.0",
     "postcss-loader": "^0.5.1",
     "postcss-mixins": "^0.4.0",
     "postcss-nested": "^0.3.2",
     "postcss-simple-vars": "^0.3.0",
+    "sass-loader": "^1.0.3",
     "style-loader": "^0.12.3",
     "webpack": "^1.10.3",
     "whatwg-fetch": "^0.9.0"

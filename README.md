@@ -1,4 +1,5 @@
-# FFFAST
+
+# FFFAST (1.0.0)
 
 > quick local jsbin alike experimentation folder for CSS and JS (ES6-react-etc)
 
@@ -8,7 +9,8 @@ With [npm](http://npmjs.org) do:
 
     npm install -g fffast
 
-## usage
+## Commands
+
 
 ```bash
 
@@ -16,71 +18,102 @@ Usage: fffast / create a quick css/js experimentation folder
 
 $ fffast {command}
 
-
 Commands:
 
-  init|i   copy folders and files into current folder
+init|i   copy basic structure into current folder and start fffast
 
 Options:
 
-  -h, --help         output usage information
-  -V, --version      output the version number
-  -p, --port <port>  server port
+-h, --help                         output usage information
+-V, --version                      output the version number
+-p, --port <port>                  server port
+--css <postcss, scss, sass, less>  css style, default is 'postcss'
 
 
 ```
+
+### Usage
+
+#### Starting with an empty folder
 
 `fffast init` creates following folders/files:
 
 ```
 /_js
-  app.js
+  script.js
 
 /_css
-  reset.css
-  mixins.css
-  screen.css
-
-/js
-/css
+  (_)reset.[css,scss,sass,less]
+  (_)mixins.[css,scss,sass,less]
+  style.[css,scss,sass,less]
 
 index.html
+
+.editorconfig
+.eslintrc
+
 ```
 
-only
+based on the [template](/template) folder
 
-- **_js/app.js**
-- **_css/screen.css**
+
+#### Creating your own folder
+
+
+- **_js/script.js**
+- **_css/style.[css,scss,sass,less]**
 - **index.html**
 
 are required, the rest is optional
 
-run the
+run the `fffast` command in the folder
 
-`ffast`
+## Running fffast
 
-command in the folder to make **the magic** happen
+1. **fffast** serves this folder (see [Server](#Server))
+2. Watches for changes in **script.js** and **screen.[css|scss|sass|less]** using [Webpack](https://github.com/webpack/webpack)
+3. **Builds** the **JavaScript** (see [JavaScript](#JavaScript))
+4. **Builds** the **CSS** (see [CSS](#CSS))
 
-## The Magic?
+### Server
 
-1. **fffast** serves this folder as a **static directory** on [http://localhost:3000](http://localhost:3000) using [Express](https://github.com/strongloop/express)
-2. watches for changes in **app.js** and **screen.css** using [Webpack](https://github.com/webpack/webpack)
-3. **builds** the **JavaScript** with [Babel](https://github.com/babel/babel) and **lints** the files with [ESLint](https://github.com/eslint/eslint) (see below)
-4. **builds** the **CSS** with [PostCSS](https://github.com/postcss/postcss) (see below)
+Express serves the folder as a **static directory** on [http://localhost:3000](http://localhost:3000) using [Express](https://github.com/strongloop/express)
 
-[babel-core/polyfill](https://babeljs.io/docs/usage/polyfill/) & [whatwg-fetch](https://github.com/github/fetch) are already loaded, have fun.
+You can pass a port via `-p <port>` or `--port <port>`
 
-You can also use it for [React](https://github.com/facebook/react) experiments (use [cdnjs](https://cdnjs.com/libraries/react/))
-<br/>(added [React](https://github.com/facebook/react) to [externals](http://webpack.github.io/docs/library-and-externals.html) in [webpack](https://github.com/webpack/webpack))
+### JavaScript
 
-### JS
+#### Babel
 
-[ES6](http://exploringjs.com/) and beyond with [Babel](https://github.com/babel/babel) + [ESLint](https://github.com/eslint/eslint)
-<br/>(stage 0 is enabled)
+[ES6](http://exploringjs.com/) and beyond with [Babel](https://github.com/babel/babel)
+
+- [babel-core/polyfill](https://babeljs.io/docs/usage/polyfill/) & [whatwg-fetch]
+(https://github.com/github/fetch) are preloaded
+- [stage 0](https://babeljs.io/docs/usage/experimental/) features are enabled
+
+#### Linting
+
+if there is a [.eslintrc](http://eslint.org/docs/user-guide/configuring.html), the files are linted using [ESLint](https://github.com/eslint/eslint)
+
+You can use the [.eslintrc](templates/base/.eslintrc) file the `fffast init` command copies
+
+- [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react) linting rules are available
 
 ### CSS
 
-[PostCSS](https://github.com/postcss/postcss) transforms with following plugins
+`fffast` looks for the following files in this order (and stops when found one)
+
+1. _css/style.**css** (PostCSS)
+2. _css/style.**scss** (Sass via .scss syntax)
+3. _css/style.**sass** (Sass via .sass syntax)
+4. _css/style.**less** (Less)
+
+
+#### PostCSS
+
+Using [postcss-loader](https://github.com/postcss/postcss-loader)
+
+Following postcss plugins are used:
 
 - [postcss-custom-properties](https://github.com/postcss/postcss-custom-properties)
 - [postcss-import](https://github.com/postcss/postcss-import)
@@ -88,8 +121,20 @@ You can also use it for [React](https://github.com/facebook/react) experiments (
 - [postcss-nested](https://github.com/postcss/postcss-nested)
 - [autoprefixer](https://github.com/postcss/autoprefixer-core) (last 2 versions / IE 9 >)
 
-## TODO
+#### SASS / SCSS
 
-- override files (own .eslintrc for example)
-- turn off [ESLint](https://github.com/eslint/eslint)
-- extra node_modules installation (add folder to modules in webpack.config)
+Using [sass-loader](https://github.com/jtangelder/sass-loader)
+
+prefixes added via [postcss-loader](https://github.com/postcss/postcss-loader) and  [autoprefixer](https://github.com/postcss/autoprefixer-core) (last 2 versions / IE 9 >)
+
+#### LESS
+
+Using [less-loader](https://github.com/webpack/less-loader)
+
+prefixes added via [postcss-loader](https://github.com/postcss/postcss-loader) and  [autoprefixer](https://github.com/postcss/autoprefixer-core) (last 2 versions / IE 9 >)
+
+### Extra
+
+#### node_modules
+
+You can install node modules and import them in your javascript, Webpack looks in the local and fffast node_modules folder.
