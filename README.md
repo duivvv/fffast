@@ -1,5 +1,5 @@
 
-# FFFAST (1.0.0)
+# FFFAST (1.0.1)
 
 > quick local jsbin alike experimentation folder for CSS and JS (ES6-react-etc)
 
@@ -70,10 +70,10 @@ run the `fffast` command in the folder
 
 ## Running fffast
 
-1. **fffast** serves this folder (see [Server](#Server))
+1. **fffast** serves this folder (see [Server](#server))
 2. Watches for changes in **script.js** and **screen.[css|scss|sass|less]** using [Webpack](https://github.com/webpack/webpack)
-3. **Builds** the **JavaScript** (see [JavaScript](#JavaScript))
-4. **Builds** the **CSS** (see [CSS](#CSS))
+3. **Builds** the **JavaScript** (see [JavaScript](#javascript))
+4. **Builds** the **CSS** (see [CSS](#css))
 
 ### Server
 
