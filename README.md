@@ -1,13 +1,13 @@
 
-# FFFAST (1.0.1)
+# FFFAST (1.1.0)
 
 > quick local jsbin alike experimentation folder for CSS and JS (ES6-react-etc)
 
 ## Install
 
-With [npm](http://npmjs.org) do:
+**I'm currently finding out what goes wrong when you install it via npm install -g
 
-    npm install -g fffast
+But you can clone the repository and run `npm install` and `npm link` in it to make it work.**
 
 ## Commands
 
@@ -137,4 +137,4 @@ prefixes added via [postcss-loader](https://github.com/postcss/postcss-loader) a
 
 #### node_modules
 
-You can install node modules and import them in your javascript, Webpack looks in the local and fffast node_modules folder.
+You can install node modules and import them in your JavaScript files, Webpack looks in the local and fffast node_modules folder.

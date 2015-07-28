@@ -7,6 +7,7 @@ var spawn = require('child_process').spawn;
 var fs = require('fs');
 var path = require('path');
 
+
 var Logger = require('../lib/utils/Logger');
 
 var ArgumentsParser = require('../lib/utils/ArgumentsParser');
@@ -14,6 +15,8 @@ ArgumentsParser.init(process.argv);
 
 var remote_folder = path.join(ArgumentsParser.getById(1), '/../..');
 var module_folder = path.join(__dirname, '/../..');
+
+console.log(path.join(module_folder, '/node_modules/'));
 
 var settings = require('../lib/data/settings')(
   remote_folder,
@@ -71,8 +74,14 @@ var webpack_settings = {
   },
   resolveLoader: {
     modulesDirectories: [
-      path.join(module_folder, '/node_modules/'),
-      path.join(remote_folder, '/node_modules/')
+      path.relative(
+        path.join(settings.js.dest, '..'),
+        __dirname, path.join(module_folder, '/node_modules/')
+      ),
+      path.relative(
+        path.join(settings.js.dest, '..'),
+        path.join(remote_folder, '/node_modules/')
+      )
     ],
   },
   resolve: {
@@ -135,5 +144,7 @@ if(settings.eslintrc){
     loader: 'eslint'
   });
 }
+
+console.log(webpack_settings.resolveLoader);
 
 module.exports = webpack_settings;

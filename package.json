@@ -1,6 +1,6 @@
 {
   "name": "fffast",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "fffast basic ES6 and postcss experimentation folder without all the node_modules hassle",
   "main": "./src/fffast.js",
   "scripts": {
@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "autoprefixer-core": "^5.2.1",
-    "babel-core": "^5.8.3",
+    "babel-core": "^5.8.9",
     "babel-eslint": "^3.1.26",
     "babel-loader": "^5.3.2",
     "chalk": "^1.1.0",
