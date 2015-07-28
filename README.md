@@ -1,13 +1,13 @@
 
-# FFFAST (1.1.0)
+# FFFAST (1.1.1)
 
 > quick local jsbin alike experimentation folder for CSS and JS (ES6-react-etc)
 
 ## Install
 
-**I'm currently finding out what goes wrong when you install it via npm install -g
+I'm currently finding out what goes wrong when you install it via ``npm install fffast -g``
 
-But you can clone the repository and run `npm install` and `npm link` in it to make it work.**
+But you can clone the repository and run `npm install` and `npm link` in it to make it work.
 
 ## Commands
 
