@@ -1,5 +1,5 @@
 
-# FFFAST (1.1.1)
+# FFFAST (1.1.2)
 
 > quick local jsbin alike experimentation folder for CSS and JS (ES6-react-etc)
 
@@ -95,7 +95,7 @@ You can pass a port via `-p <port>` or `--port <port>`
 
 if there is a [.eslintrc](http://eslint.org/docs/user-guide/configuring.html), the files are linted using [ESLint](https://github.com/eslint/eslint)
 
-You can use the [.eslintrc](templates/base/.eslintrc) file the `fffast init` command copies
+You can use the [.eslintrc](template/base/.eslintrc) file the `fffast init` command copies
 
 - [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react) linting rules are available
 

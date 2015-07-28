@@ -16,8 +16,6 @@ ArgumentsParser.init(process.argv);
 var remote_folder = path.join(ArgumentsParser.getById(1), '/../..');
 var module_folder = path.join(__dirname, '/../..');
 
-console.log(path.join(module_folder, '/node_modules/'));
-
 var settings = require('../lib/data/settings')(
   remote_folder,
   ArgumentsParser.getByKey('--loader')
@@ -144,7 +142,5 @@ if(settings.eslintrc){
     loader: 'eslint'
   });
 }
-
-console.log(webpack_settings.resolveLoader);
 
 module.exports = webpack_settings;
