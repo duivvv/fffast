@@ -72,15 +72,9 @@ var webpack_settings = {
   },
   resolveLoader: {
     modulesDirectories: [
-      path.relative(
-        path.join(settings.js.dest, '..'),
-        __dirname, path.join(module_folder, '/node_modules/')
-      ),
-      path.relative(
-        path.join(settings.js.dest, '..'),
-        path.join(remote_folder, '/node_modules/')
-      )
-    ],
+      path.join(module_folder, '/node_modules/'),
+      path.join(remote_folder, '/node_modules/')
+    ]
   },
   resolve: {
     alias: {
