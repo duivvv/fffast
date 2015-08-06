@@ -1,5 +1,5 @@
 
-# FFFAST (1.3.0)
+# FFFAST (1.3.1)
 
 > quick local jsbin alike experimentation folder for CSS and JS (ES6-react-etc)
 
@@ -7,7 +7,7 @@
 
 ```
 npm install fffast -g
-``
+```
 
 ## Commands
 
