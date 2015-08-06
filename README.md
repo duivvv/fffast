@@ -1,5 +1,5 @@
 
-# FFFAST (1.3.1)
+# FFFAST (1.3.2)
 
 > quick local jsbin alike experimentation folder for CSS and JS (ES6-react-etc)
 
