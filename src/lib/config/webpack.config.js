@@ -8,22 +8,12 @@ var Logger = require('../utils/Logger');
 var ArgumentsParser = require('../utils/ArgumentsParser');
 ArgumentsParser.init(process.argv);
 
-var paths = require('./paths')(
-  ArgumentsParser.getByKey('loader')
-);
+var paths = require('./paths')(ArgumentsParser.getLoader());
 
 var module_folders = [
   path.join(paths.module_folder, 'node_modules'),
   path.join(paths.remote_folder, 'node_modules')
 ];
-
-try {
-  fs.statSync(paths.eslintrc);
-}
-catch(err){
-  Logger.message('no .eslintrc found, disabled linting\n');
-  paths.eslintrc = false;
-}
 
 var config = {
   entry: [
@@ -38,9 +28,9 @@ var config = {
   module: {
     loaders: []
   },
-  plugins: require('./plugins/webpack')(),
+  plugins: require('./webpack.plugins')(),
   postcss: function(){
-    return require('./plugins/postcss')(paths.css.loader);
+    return require('./postcss.plugins').call(this);
   },
   eslint: {
     configFile: paths.eslintrc
@@ -50,7 +40,7 @@ var config = {
   },
   resolve: {
     modulesDirectories: module_folders,
-    extensions: require('./extensions')
+    extensions: require('./settings').ext
   }
 };
 
@@ -62,12 +52,15 @@ config.module.loaders.push(
   require('../loaders/' + paths.css.loader)
 );
 
-if(paths.eslintrc){
-
+try {
+  fs.statSync(paths.eslintrc);
   config.module.loaders.push(
     require('../loaders/eslint')
   );
-
+}
+catch(err){
+  Logger.message('no .eslintrc found, disabled linting\n');
+  paths.eslintrc = false;
 }
 
 module.exports = config;

@@ -3,9 +3,9 @@ var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-var paths = require('../paths')();
+var paths = require('./paths')();
 
-var ArgumentsParser = require('../../utils/ArgumentsParser');
+var ArgumentsParser = require('../utils/ArgumentsParser');
 ArgumentsParser.init(process.argv);
 
 function _isMin(){

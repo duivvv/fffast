@@ -1,7 +1,7 @@
 var spawn = require('child_process').spawn;
 var path = require('path');
 
-function _args(settings){
+function run(settings, program){
 
   var args = [];
 
@@ -13,7 +13,7 @@ function _args(settings){
   args.push('--loader');
   args.push(settings.css.loader);
 
-  if(settings.program.min || false){
+  if(program.min || false){
     args.push('-p');
     args.push('-d');
   }
@@ -21,13 +21,7 @@ function _args(settings){
   args.push('--progress');
   args.push('--watch');
 
-  return args;
-
-}
-
-function run(settings){
-
-  return spawn('webpack', _args(settings), { stdio: 'inherit' });
+  return spawn('webpack', args, { stdio: 'inherit' });
 
 }
 

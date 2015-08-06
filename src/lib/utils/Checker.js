@@ -3,11 +3,13 @@ var Logger = require('./Logger');
 var path = require('path');
 var fs = require('fs');
 
-var identifiers = require('../config/identifiers');
+var identifiers = require('../config/settings').identifiers;
+
+var paths = require('../config/paths')();
 
 var Checker = {
 
-  _loaders: ['css', 'scss', 'sass', 'less'],
+  _loaders: require('../config/settings').loaders,
 
   _handleCheck: function(done, total, error, cb){
     if(done === total){
@@ -19,9 +21,7 @@ var Checker = {
     }
   },
 
-  check: function(remote_folder, ignore, cb){
-
-    this._remote_folder = remote_folder;
+  check: function(ignore, cb){
 
     var done = 0;
     var total = 3;
@@ -87,10 +87,9 @@ var Checker = {
 
   _checkCSSInstance: function(loader, cb){
 
-    var style_path = '/_css/' + identifiers.css + '.' + loader;
-    var full_path = path.join(this._remote_folder, style_path);
+    var paths = require('../config/paths')(loader);
 
-    fs.stat(full_path, function(err, data){
+    fs.stat(paths.css.src, function(err, data){
 
       if(data){
         return cb(loader);
@@ -106,7 +105,6 @@ var Checker = {
 
     var checked = 0;
     var loader = '';
-    var file_obj = false;
 
     for(var i = 0;i < this._loaders.length;i++){
 
@@ -130,10 +128,7 @@ var Checker = {
 
   _checkJS: function(cb){
 
-    var script_path = '/_js/' + identifiers.js + '.js';
-    var full_path = path.join(this._remote_folder, script_path);
-
-    fs.stat(full_path, function(err, data){
+    fs.stat(paths.js.src, function(err, data){
       if(data) return cb(true);
       return cb(false);
     });
@@ -142,10 +137,7 @@ var Checker = {
 
   _checkHTML: function(cb){
 
-    var index_path = '/index.html';
-    var full_path = path.join(this._remote_folder, index_path);
-
-    fs.stat(full_path, function(err, data){
+    fs.stat(paths.html, function(err, data){
       if(data) return cb(true);
       return cb(false);
     });

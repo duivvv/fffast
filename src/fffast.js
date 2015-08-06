@@ -15,80 +15,6 @@ var node, webpack;
 
 var paths = require('./lib/config/paths')();
 
-function _buildTemplateCSSPath(){
-  return path.join(
-    paths.template_folder, '/css/', '_' + paths.css.loader
-  );
-}
-
-//fffast i // fffast init
-function _init(){
-
-  var options = ['postcss', 'scss', 'sass', 'less'];
-
-  var css = program.css || 'postcss';
-
-  if(options.indexOf(css.toLowerCase()) === -1){
-    Logger.default(css.toLowerCase());
-    css = 'postcss'
-  }
-
-  paths.css.loader = css === 'postcss' ? 'css' : css
-
-  console.log(paths.template_folder, paths.remote_folder);
-
-  fs.copy(path.join(paths.template_folder, '/base'),
-            paths.remote_folder, function(err){
-
-    process.chdir(paths.remote_folder);
-
-    if (err) return Logger.error('error while creating structure');
-
-    var remote_css_path = path.join(paths.remote_folder, '/_css');
-
-    fs.copy(_buildTemplateCSSPath(), remote_css_path, function(err){
-
-        if (err) return Logger.error('error while creating structure');
-        else _run();
-
-    });
-
-  });
-
-}
-
-//fffast
-function _run(){
-
-  paths.program = program;
-
-  var processor = paths.css.loader === 'css' ? 'postcss' : paths.css.loader;
-  Logger.running(processor);
-
-  _spawnNode();
-  _spawnWebpack();
-
-}
-
-function _spawnWebpack(){
-
-  webpack = require('./lib/commands/webpack')(paths);
-  webpack.on('exit', function(){
-    node.kill();
-  });
-
-}
-
-function _spawnNode(){
-
-  node = require('./lib/commands/express')(paths);
-  node.on('exit', function(){
-    webpack.kill();
-    node.kill();
-  });
-
-}
-
 program
   .version(version)
   .option("-p, --port <port>", "server port")
@@ -104,15 +30,18 @@ program
 
     Logger.title(version);
 
-    Checker.check(paths.remote_folder, true, function(loader){
+    Checker.check(true, function(loader){
+
       if(loader){
-        paths.css.loader = loader;
-        var processor = paths.css.loader === 'css' ? 'postcss' : paths.css.loader;
+
+        paths = require('./lib/config/paths')(loader);
         Logger.message("structure exists \n");
         _run();
+
       }else{
         _init();
       }
+
     });
 
   });
@@ -123,13 +52,71 @@ if (program.args.length < 1 ) {
 
   Logger.title(version);
 
-  Checker.check(paths.remote_folder, false, function(loader){
+  Checker.check(false, function(loader){
+
     if(loader){
-      paths.css.loader = loader;
+      paths = require('./lib/config/paths')(loader);
       _run();
     }
+
   });
 
 }
 
 
+//fffast i // fffast init
+function _init(){
+
+  var loaders = require('./lib/config/settings').loaders;
+
+  var css = program.css || loaders[0].name;
+  var loader = {};
+
+  var found = false;
+
+  for(var i = 0;i < loaders.length;i++){
+    if(loaders[i].name.toLowerCase() === css.toLowerCase()){
+      loader = loaders[i];
+      found = true;
+    }
+  }
+
+  if(!found){
+    Logger.default(css.toLowerCase());
+    loader = loaders[0];
+  }
+
+  paths = require('./lib/config/paths')(loader);
+
+  fs.copy(paths.template.base, paths.remote_folder, function(err){
+
+    if (err) return Logger.error('error while creating structure');
+
+    fs.copy(paths.template.css, paths.css.remote_folder, function(err){
+
+        if (err) return Logger.error('error while creating structure');
+        else _run();
+
+    });
+
+  });
+
+}
+
+//fffast
+function _run(){
+
+  Logger.running(paths.css.loader);
+
+  node = require('./lib/commands/express')(paths, program);
+  node.on('exit', function(){
+    webpack.kill();
+    node.kill();
+  });
+
+  webpack = require('./lib/commands/webpack')(paths, program);
+  webpack.on('exit', function(){
+    node.kill();
+  });
+
+}

@@ -1,4 +1,4 @@
-module.exports = function(loader){
+module.exports = function(){
 
   var plugins = [
     require('autoprefixer-core')({
@@ -7,7 +7,8 @@ module.exports = function(loader){
     })
   ];
 
-  if(loader === 'css'){
+  //all plugins, see loaders/postcss.js, extra query on end of loader
+  if(this.query.indexOf('?full') === 0){
 
     plugins = plugins.concat([
       require('postcss-import')({

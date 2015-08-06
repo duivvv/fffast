@@ -5,9 +5,9 @@
 
 ## Install
 
-I'm currently finding out what goes wrong when you install it via ``npm install fffast -g``
-
-But you can clone the repository and run `npm install` and `npm link` in it to make it work.
+```
+npm install fffast -g
+``
 
 ## Commands
 

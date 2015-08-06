@@ -1,3 +1,5 @@
+var CSSLoaders = require('../config/settings').loaders;
+
 var ArgumentsParser = {
 
   init: function(args){
@@ -14,6 +16,18 @@ var ArgumentsParser = {
 
     return key;
 
+  },
+
+  getLoader: function(){
+    if(!this.exists('loader')){
+      return CSSLoaders[0];
+    }
+    for(var i = 0;i < CSSLoaders.length;i++){
+      if(CSSLoaders[i].name === this.getByKey('loader')){
+        return CSSLoaders[i];
+      }
+    }
+    return CSSLoaders[0]
   },
 
   getByKey: function(key){

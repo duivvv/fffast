@@ -1,0 +1,38 @@
+{
+
+  "loaders": [
+    {
+      "name": "postcss",
+      "ext": "css"
+    },
+    {
+      "name": "scss",
+      "ext": "scss"
+    },
+    {
+      "name": "sass",
+      "ext": "sass"
+    },
+    {
+      "name": "less",
+      "ext": "less"
+    }
+  ],
+
+  "ext": [
+    "",
+    ".json",
+    ".js",
+    ".css",
+    ".jsx",
+    ".scss",
+    ".sass",
+    ".less"
+  ],
+
+  "identifiers": {
+    "js": "script",
+    "css": "style"
+  }
+
+}

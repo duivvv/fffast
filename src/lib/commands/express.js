@@ -1,9 +1,7 @@
 var spawn = require('child_process').spawn;
 var path = require('path');
 
-var settings;
-
-function _args(settings){
+function run(settings, program){
 
   var args = [];
 
@@ -16,15 +14,10 @@ function _args(settings){
   args.push(settings.remote_folder);
 
   args.push('--port');
-  args.push(parseInt(settings.program.port) || 3000);
+  args.push(parseInt(program.port) || 3000);
 
-  return args;
 
-}
-
-function run(settings){
-
-  return spawn('node', _args(settings), { stdio: 'inherit' });
+  return spawn('node', args, { stdio: 'inherit' });
 
 }
 
