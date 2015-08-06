@@ -7,8 +7,8 @@ var compression = require('compression');
 var ArgumentsParser = require('../lib/utils/ArgumentsParser');
 ArgumentsParser.init(process.argv);
 
-var static = ArgumentsParser.getById(0);
-var port = ArgumentsParser.getById(1);
+var static = ArgumentsParser.getByKey('static');
+var port = ArgumentsParser.getByKey('port');
 
 var spawn = require('child_process').spawn;
 var Logger = require('../lib/utils/Logger');

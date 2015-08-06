@@ -2,7 +2,6 @@
 
 var fs = require('fs-extra')
 var path = require('path');
-var spawn = require('child_process').spawn;
 
 var program = require("commander");
 var mkdirp = require('mkdirp');
@@ -12,53 +11,14 @@ var Logger = require('./lib/utils/Logger');
 
 var version = require('../package').version;
 
-var remote_folder = fs.realpathSync('./');
-var template_folder = path.join(__dirname, '/../template');
-var module_folder = path.join(__dirname, '/..');
-
 var node, webpack;
 
-var settings = {};
+var paths = require('./lib/config/paths')();
 
-function _nodeArgs(){
-
-  var args = [];
-
-  var server_js = path.join(module_folder, 'src/files/server.js');
-  args.push(server_js);
-
-  //pass remote path as extra param
-  args.push(process.cwd());
-
-  var port = parseInt(program.port) || 3000;
-  args.push(port);
-
-  return args;
-
-}
-
-function _webpackArgs(){
-
-  var args = [];
-
-  var src = path.join(module_folder, 'src/files/entry.js');
-  var dest = path.join(settings.js.dest);
-
-  args.push(src);
-  args.push(dest);
-
-  args.push('--config');
-  args.push(path.join(module_folder, 'src/files/webpack.config.js'));
-
-  args.push('--loader');
-  args.push(settings.css.loader);
-
-  args.push('--watch');
-
-  args.push('--progress');
-
-  return args;
-
+function _buildTemplateCSSPath(){
+  return path.join(
+    paths.template_folder, '/css/', '_' + paths.css.loader
+  );
 }
 
 //fffast i // fffast init
@@ -73,20 +33,20 @@ function _init(){
     css = 'postcss'
   }
 
-  settings = require('./lib/data/settings')(remote_folder, css === 'postcss' ? 'css' : css);
+  paths.css.loader = css === 'postcss' ? 'css' : css
 
-  var css_template_folder = path.join(template_folder, '_' + settings.css.loader);
+  console.log(paths.template_folder, paths.remote_folder);
 
-  fs.copy(path.join(template_folder, '/base'), remote_folder, function(err){
+  fs.copy(path.join(paths.template_folder, '/base'),
+            paths.remote_folder, function(err){
 
-    process.chdir(remote_folder);
+    process.chdir(paths.remote_folder);
 
     if (err) return Logger.error('error while creating structure');
 
-    var css_path = path.join(template_folder, '/css/', '_' + settings.css.loader);
-    var remote_css_path = path.join(remote_folder, '/_css');
+    var remote_css_path = path.join(paths.remote_folder, '/_css');
 
-    fs.copy(css_path, remote_css_path, function(err){
+    fs.copy(_buildTemplateCSSPath(), remote_css_path, function(err){
 
         if (err) return Logger.error('error while creating structure');
         else _run();
@@ -100,7 +60,9 @@ function _init(){
 //fffast
 function _run(){
 
-  var processor = settings.css.loader === 'css' ? 'postcss' : settings.css.loader;
+  paths.program = program;
+
+  var processor = paths.css.loader === 'css' ? 'postcss' : paths.css.loader;
   Logger.running(processor);
 
   _spawnNode();
@@ -109,24 +71,29 @@ function _run(){
 }
 
 function _spawnWebpack(){
-  webpack = spawn('webpack', _webpackArgs(), { stdio: 'inherit' });
+
+  webpack = require('./lib/commands/webpack')(paths);
   webpack.on('exit', function(){
     node.kill();
   });
+
 }
 
 function _spawnNode(){
-  node = spawn('node', _nodeArgs(), { stdio: 'inherit' });
+
+  node = require('./lib/commands/express')(paths);
   node.on('exit', function(){
     webpack.kill();
     node.kill();
   });
+
 }
 
 program
   .version(version)
   .option("-p, --port <port>", "server port")
   .option("--css <postcss, scss, sass, less>", "css style, default is 'postcss'")
+  .option("-m, --min", "minify output, cfr. webpack -p -d --watch")
   .usage('/ create a quick css/js experimentation folder \n\n  $ fffast {command}');
 
 program
@@ -137,10 +104,10 @@ program
 
     Logger.title(version);
 
-    Checker.check(remote_folder, true, function(_settings){
-      settings = _settings;
-      if(settings){
-        var processor = settings.css.loader === 'css' ? 'postcss' : settings.css.loader;
+    Checker.check(paths.remote_folder, true, function(loader){
+      if(loader){
+        paths.css.loader = loader;
+        var processor = paths.css.loader === 'css' ? 'postcss' : paths.css.loader;
         Logger.message("structure exists \n");
         _run();
       }else{
@@ -156,9 +123,9 @@ if (program.args.length < 1 ) {
 
   Logger.title(version);
 
-  Checker.check(remote_folder, false, function(_settings){
-    settings = _settings;
-    if(_settings){
+  Checker.check(paths.remote_folder, false, function(loader){
+    if(loader){
+      paths.css.loader = loader;
       _run();
     }
   });

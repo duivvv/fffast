@@ -1,5 +1,5 @@
 
-# FFFAST (1.2.0)
+# FFFAST (1.3.0)
 
 > quick local jsbin alike experimentation folder for CSS and JS (ES6-react-etc)
 
@@ -18,17 +18,18 @@ Usage: fffast / create a quick css/js experimentation folder
 
 $ fffast {command}
 
+
 Commands:
 
-init|i   copy basic structure into current folder and start fffast
+  init|i   copy basic structure into current folder and start fffast
 
 Options:
 
--h, --help                         output usage information
--V, --version                      output the version number
--p, --port <port>                  server port
---css <postcss, scss, sass, less>  css style, default is 'postcss'
-
+  -h, --help                         output usage information
+  -V, --version                      output the version number
+  -p, --port <port>                  server port
+  --css <postcss, scss, sass, less>  css style, default is 'postcss' (use on init)
+  -m, --min                          minify output, cfr. webpack -p -d --watch
 
 ```
 
@@ -38,12 +39,15 @@ Options:
 
 `fffast init` creates following folders/files:
 
+based on the [template](/template) folder
+
 ```
 /_js
   script.js
 
 /_css
   (_)reset.[css,scss,sass,less]
+  (_)normalize.[css,scss,sass,less]
   (_)mixins.[css,scss,sass,less]
   style.[css,scss,sass,less]
 
@@ -54,7 +58,7 @@ index.html
 
 ```
 
-based on the [template](/template) folder
+You can choose your flavor of css by setting the --css flag to postcss, scss, sass or less
 
 
 #### Creating your own folder
@@ -87,8 +91,6 @@ You can pass a port via `-p <port>` or `--port <port>`
 
 [ES6](http://exploringjs.com/) and beyond with [Babel](https://github.com/babel/babel)
 
-- [babel-core/polyfill](https://babeljs.io/docs/usage/polyfill/) & [whatwg-fetch]
-(https://github.com/github/fetch) are preloaded
 - [stage 0](https://babeljs.io/docs/usage/experimental/) features are enabled
 
 #### Linting

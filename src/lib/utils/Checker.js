@@ -3,7 +3,7 @@ var Logger = require('./Logger');
 var path = require('path');
 var fs = require('fs');
 
-var identifiers = require('../data/identifiers');
+var identifiers = require('../config/identifiers');
 
 var Checker = {
 
@@ -12,7 +12,7 @@ var Checker = {
   _handleCheck: function(done, total, error, cb){
     if(done === total){
       if(!error){
-        cb(require('../data/settings')(this._remote_folder, this.loader));
+        cb(this.loader);
       }else{
         cb(false);
       }
