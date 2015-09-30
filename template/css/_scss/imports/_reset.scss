@@ -45,4 +45,8 @@ table {
   border-spacing: 0;
 }
 
+main {
+  display: block;
+}
+
 @include border-box-default;

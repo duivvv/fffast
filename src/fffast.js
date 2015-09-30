@@ -18,7 +18,7 @@ var paths = require('./lib/config/paths')();
 program
   .version(version)
   .option("-p, --port <port>", "server port")
-  .option("--css <postcss, scss, sass, less>", "css style, default is 'postcss'")
+  .option("--css <scss, sass, less, postcss>", "css style, default is 'scss'")
   .option("-m, --min", "minify output, cfr. webpack -p -d --watch")
   .usage('/ create a quick css/js experimentation folder \n\n  $ fffast {command}');
 

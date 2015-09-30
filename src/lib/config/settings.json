@@ -2,10 +2,6 @@
 
   "loaders": [
     {
-      "name": "postcss",
-      "ext": "css"
-    },
-    {
       "name": "scss",
       "ext": "scss"
     },
@@ -16,6 +12,10 @@
     {
       "name": "less",
       "ext": "less"
+    },
+    {
+      "name": "postcss",
+      "ext": "css"
     }
   ],
 

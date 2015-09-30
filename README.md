@@ -1,5 +1,5 @@
 
-# FFFAST (1.3.2)
+# FFFAST (1.4.0)
 
 > quick local jsbin alike experimentation folder for CSS and JS (ES6-react-etc)
 
@@ -8,6 +8,12 @@
 ```
 npm install fffast -g
 ```
+
+make sure you have webpack globally installed
+
+```
+npm install webpack -g
+``
 
 ## Commands
 
@@ -28,7 +34,7 @@ Options:
   -h, --help                         output usage information
   -V, --version                      output the version number
   -p, --port <port>                  server port
-  --css <postcss, scss, sass, less>  css style, default is 'postcss' (use on init)
+  --css <scss, sass, less, postcss>  css style, default is 'scss' (use on init)
   -m, --min                          minify output, cfr. webpack -p -d --watch
 
 ```
@@ -46,10 +52,10 @@ based on the [template](/template) folder
   script.js
 
 /_css
-  (_)reset.[css,scss,sass,less]
-  (_)normalize.[css,scss,sass,less]
-  (_)mixins.[css,scss,sass,less]
-  style.[css,scss,sass,less]
+  (_)reset.[scss,sass,less,css]
+  (_)normalize.[scss,sass,less,css]
+  (_)mixins.[scss,sass,less,css]
+  style.[scss,sass,less,css]
 
 index.html
 
@@ -58,14 +64,14 @@ index.html
 
 ```
 
-You can choose your flavor of css by setting the --css flag to postcss, scss, sass or less
+You can choose your flavor of css by setting the --css flag to scss, sass, less or postcss
 
 
 #### Creating your own folder
 
 
 - **_js/script.js**
-- **_css/style.[css,scss,sass,less]**
+- **_css/style.[scss,sass,less, css]**
 - **index.html**
 
 are required, the rest is optional
@@ -105,11 +111,16 @@ You can use the [.eslintrc](template/base/.eslintrc) file the `fffast init` comm
 
 `fffast` looks for the following files in this order (and stops when found one)
 
-1. _css/style.**css** (PostCSS)
-2. _css/style.**scss** (Sass via .scss syntax)
-3. _css/style.**sass** (Sass via .sass syntax)
-4. _css/style.**less** (Less)
+1. _css/style.**scss** (Sass via .scss syntax)
+2. _css/style.**sass** (Sass via .sass syntax)
+3. _css/style.**less** (Less)
+4. _css/style.**css** (PostCSS)
 
+#### SCSS / SASS
+
+Using [sass-loader](https://github.com/jtangelder/sass-loader)
+
+prefixes added via [postcss-loader](https://github.com/postcss/postcss-loader) and  [autoprefixer](https://github.com/postcss/autoprefixer-core) (last 2 versions / IE 9 >)
 
 #### PostCSS
 
@@ -122,12 +133,6 @@ Following postcss plugins are used:
 - [postcss-mixins](https://github.com/postcss/postcss-mixins)
 - [postcss-nested](https://github.com/postcss/postcss-nested)
 - [autoprefixer](https://github.com/postcss/autoprefixer-core) (last 2 versions / IE 9 >)
-
-#### SASS / SCSS
-
-Using [sass-loader](https://github.com/jtangelder/sass-loader)
-
-prefixes added via [postcss-loader](https://github.com/postcss/postcss-loader) and  [autoprefixer](https://github.com/postcss/autoprefixer-core) (last 2 versions / IE 9 >)
 
 #### LESS
 

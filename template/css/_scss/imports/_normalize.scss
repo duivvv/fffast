@@ -428,4 +428,8 @@ th {
   padding: 0;
 }
 
+main {
+  display: block;
+}
+
 @include border-box-default;
