@@ -3,12 +3,8 @@
 // import 'babel-core/polyfill';
 // import 'whatwg-fetch';
 
-(function(){
+const init = () => {
+  console.log('hello world');
+}
 
-  function init(){
-    console.log('hello world');
-  }
-
-  init();
-
-})();
+init();
