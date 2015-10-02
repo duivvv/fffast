@@ -8,12 +8,17 @@ body {
 }
 
 main {
-  font-size: 1.8em;
+  @include center;
+  font-size: 1.5em;
   width: 500px;
-  margin: 0 auto;
   padding-top: 30px;
 }
 
+section {
+  margin-top: 10px;
+}
+
 header {
+  font-size: 1.3em;
   font-weight: bold;
 }
