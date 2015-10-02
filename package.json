@@ -1,6 +1,6 @@
 {
   "name": "fffast",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "fffast basic ES6 and postcss experimentation folder without all the node_modules hassle",
   "main": "./src/fffast.js",
   "scripts": {
