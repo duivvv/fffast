@@ -1,5 +1,3 @@
-@import (reference) 'mixins';
-
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 
 /**
@@ -432,4 +430,10 @@ main {
   display: block;
 }
 
-.border-box-default;
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}

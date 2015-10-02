@@ -1,6 +1,6 @@
 {
   "name": "fffast",
-  "version": "1.4.3",
+  "version": "1.5.0",
   "description": "fffast basic ES6 and postcss experimentation folder without all the node_modules hassle",
   "main": "./src/fffast.js",
   "scripts": {
@@ -25,7 +25,7 @@
     "compression": "^1.5.1",
     "core-js": "^1.0.1",
     "css-loader": "^0.15.5",
-    "eslint": "^0.24.1",
+    "eslint": "^1.5.0",
     "eslint-loader": "^0.14.2",
     "eslint-plugin-react": "^3.0.0",
     "express": "^4.13.1",
