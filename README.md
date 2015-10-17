@@ -1,5 +1,5 @@
 
-# FFFAST (1.5.4)
+# FFFAST (1.7.0)
 
 > quick local jsbin alike experimentation folder for CSS and JS (ES6-react-etc)
 
@@ -120,7 +120,7 @@ You can use the [.eslintrc](template/base/.eslintrc) file the `fffast init` comm
 
 Using [sass-loader](https://github.com/jtangelder/sass-loader)
 
-prefixes added via [postcss-loader](https://github.com/postcss/postcss-loader) and  [autoprefixer](https://github.com/postcss/autoprefixer-core) (last 2 versions / IE 9 >)
++ [postcss-cssnext](https://github.com/cssnext/postcss-cssnext)
 
 #### PostCSS
 
@@ -128,17 +128,18 @@ Using [postcss-loader](https://github.com/postcss/postcss-loader)
 
 Following postcss plugins are used:
 
-- [postcss-custom-properties](https://github.com/postcss/postcss-custom-properties)
 - [postcss-import](https://github.com/postcss/postcss-import)
 - [postcss-mixins](https://github.com/postcss/postcss-mixins)
 - [postcss-nested](https://github.com/postcss/postcss-nested)
-- [autoprefixer](https://github.com/postcss/autoprefixer-core) (last 2 versions / IE 9 >)
+- [postcss-will-change](https://github.com/postcss/postcss-will-change)
+- [postcss-cssnext](https://github.com/cssnext/postcss-cssnext)
 
 #### LESS
 
 Using [less-loader](https://github.com/webpack/less-loader)
 
-prefixes added via [postcss-loader](https://github.com/postcss/postcss-loader) and  [autoprefixer](https://github.com/postcss/autoprefixer-core) (last 2 versions / IE 9 >)
++ [postcss-cssnext](https://github.com/cssnext/postcss-cssnext)
+
 
 ### Extra
 

@@ -1,26 +1,42 @@
 module.exports = function(){
 
-  var plugins = [
-    require('autoprefixer-core')({
-      browsers: ['IE >= 9', 'last 2 version'],
-      cascade: false
-    })
-  ];
+  var plugins = [];
 
   //all plugins, see loaders/postcss.js, extra query on end of loader
   if(this.query.indexOf('?full') === 0){
 
-    plugins = plugins.concat([
+    plugins = [
       require('postcss-import')({
         onImport: function(files){
           files.forEach(this.addDependency);
         }.bind(this)
       }),
       require('postcss-mixins'),
-      require('postcss-simple-vars'),
-      require('postcss-custom-properties'),
-      require('postcss-nested')
-    ]);
+      require('postcss-nested'),
+      require('postcss-will-change'),
+      require('postcss-cssnext')({
+        browsers: ['IE >= 10', 'last 2 version'],
+        features: {
+          autoprefixer: {
+            cascase: false
+          }
+        }
+      })
+    ];
+
+  }else{
+
+    plugins = [
+      require('postcss-will-change'),
+      require('postcss-cssnext')({
+        browsers: ['IE >= 10', 'last 2 version'],
+        features: {
+          autoprefixer: {
+            cascase: false
+          }
+        }
+      })
+    ];
 
   }
 

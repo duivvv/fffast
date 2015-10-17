@@ -33,9 +33,10 @@ var Checker = {
     this._checkCSS((function(loader){
       if(!loader){
         error = true;
+        var formats = this._loaders.map(function(loader){ return loader.ext});
         if(!ignore) Logger.error("no valid CSS entry point found, '_css/"
           + identifiers.css + "."
-          + '[' + this._loaders.join(',') + ']');
+          + '[' + formats.join(',') + ']');
       }else{
         this.loader = loader;
       }
