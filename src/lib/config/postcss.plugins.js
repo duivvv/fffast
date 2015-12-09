@@ -3,6 +3,7 @@ module.exports = function(){
   var plugins = [];
 
   //all plugins, see loaders/postcss.js, extra query on end of loader
+
   if(this.query.indexOf('?full') === 0){
 
     plugins = [
@@ -39,6 +40,7 @@ module.exports = function(){
     ];
 
   }
+
 
   return plugins;
 

@@ -45,7 +45,10 @@ var config = {
 };
 
 config.module.loaders.push(
-  require('../loaders/babel')
+  require('../loaders/babel')(
+    path.join(paths.module_folder, 'node_modules'),
+    path.join(paths.remote_folder, 'node_modules')
+  )
 );
 
 config.module.loaders.push(

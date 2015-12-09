@@ -20,6 +20,7 @@ function run(settings, program){
 
   args.push('--progress');
   args.push('--watch');
+  args.push('--display-error-details');
 
   return spawn('webpack', args, { stdio: 'inherit' });
 
