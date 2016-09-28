@@ -1,7 +1,7 @@
 
-# FFFAST (1.8.1)
+# FFFAST (2.0.0)
 
-> quick local jsbin alike experimentation folder for CSS and JS (ES6-react-etc)
+> create and watch a webtech experimentation folder
 
 ## Install
 
@@ -9,33 +9,26 @@
 npm install fffast -g
 ```
 
-make sure you have webpack globally installed
-
-```
-npm install webpack -g
-``
-
 ## Commands
-
 
 ```bash
 
-Usage: fffast / create a quick css/js experimentation folder
+Usage: fffast / create and watch a webtech experimentation folder
 
 $ fffast {command}
 
 
 Commands:
 
-  init|i   copy basic structure into current folder and start fffast
+  init|i    copy basic structure into current folder and start fffast
+  run|r     run fffast in development mode, same as 'fffast'
+  build|b   create optimized production (./dist) folder
+  serve|s   serve the ./dist folder
 
 Options:
 
-  -h, --help                         output usage information
-  -V, --version                      output the version number
-  -p, --port <port>                  server port
-  --css <scss, sass, less, postcss>  css style, default is 'scss' (use on init)
-  -m, --min                          minify output, cfr. webpack -p -d --watch
+  -h, --help     output usage information
+  -V, --version  output the version number
 
 ```
 
@@ -43,19 +36,18 @@ Options:
 
 #### Starting with an empty folder
 
-`fffast init` creates following folders/files:
+`fffast init` creates a ./src folder
 
 based on the [template](/template) folder
 
 ```
-/_js
+/js
   script.js
 
-/_css
-  (_)reset.[scss,sass,less,css]
-  (_)normalize.[scss,sass,less,css]
-  (_)mixins.[scss,sass,less,css]
-  style.[scss,sass,less,css]
+/css
+  reset.css
+  normalize.css
+  style.css
 
 index.html
 
@@ -64,14 +56,11 @@ index.html
 
 ```
 
-You can choose your flavor of css by setting the --css flag to scss, sass, less or postcss
+#### Creating your own ./src folder
 
 
-#### Creating your own folder
-
-
-- **_js/script.js**
-- **_css/style.[scss,sass,less, css]**
+- **js/script.js**
+- **css/style.css**
 - **index.html**
 
 are required, the rest is optional
@@ -80,16 +69,17 @@ run the `fffast` command in the folder
 
 ## Running fffast
 
-1. **fffast** serves this folder (see [Server](#server))
-2. Watches for changes in **script.js** and **screen.[css|scss|sass|less]** using [Webpack](https://github.com/webpack/webpack)
-3. **Builds** the **JavaScript** (see [JavaScript](#javascript))
-4. **Builds** the **CSS** (see [CSS](#css))
+`fffast / fffast r / fffast run`
 
-### Server
+to serve and watch the **./src** folder with [webpack-dev-server](https://github.com/webpack/webpack-dev-server)
 
-Express serves the folder as a **static directory** on [http://localhost:3000](http://localhost:3000) using [Express](https://github.com/strongloop/express)
+## Building a ./dist folder
 
-You can pass a port via `-p <port>` or `--port <port>`
+`fffast b / fffast build`
+
+ creates an optimized **./dist** folder and runs it with [http-server](https://github.com/indexzero/http-server)
+
+ (you can use `fffast s` / `fffast serve` to serve the **./dist** folder)
 
 ### JavaScript
 
@@ -98,51 +88,31 @@ You can pass a port via `-p <port>` or `--port <port>`
 [ES6](http://exploringjs.com/) and beyond with [Babel](https://github.com/babel/babel)
 
 - [stage 0](https://babeljs.io/docs/usage/experimental/) features are enabled
+- [react]()
+- [babel-plugin-lodash]()
 
 #### Linting
 
 if there is a [.eslintrc](http://eslint.org/docs/user-guide/configuring.html), the files are linted using [ESLint](https://github.com/eslint/eslint)
 
-You can use the [.eslintrc](template/base/.eslintrc) file the `fffast init` command copies
+You can use the [.eslintrc](template/.eslintrc) file the `fffast init` command copies
 
 - [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react) linting rules are available
 
-### CSS
-
-`fffast` looks for the following files in this order (and stops when found one)
-
-1. _css/style.**scss** (Sass via .scss syntax)
-2. _css/style.**sass** (Sass via .sass syntax)
-3. _css/style.**less** (Less)
-4. _css/style.**css** (PostCSS)
-
-#### SCSS / SASS
-
-Using [sass-loader](https://github.com/jtangelder/sass-loader)
-
-+ [postcss-cssnext](https://github.com/cssnext/postcss-cssnext)
-
-#### PostCSS
+### CSS / PostCSS
 
 Using [postcss-loader](https://github.com/postcss/postcss-loader)
 
-Following postcss plugins are used:
+Following postcss plugin is used:
 
-- [postcss-import](https://github.com/postcss/postcss-import)
-- [postcss-mixins](https://github.com/postcss/postcss-mixins)
-- [postcss-nested](https://github.com/postcss/postcss-nested)
-- [postcss-will-change](https://github.com/postcss/postcss-will-change)
-- [postcss-cssnext](https://github.com/cssnext/postcss-cssnext)
-
-#### LESS
-
-Using [less-loader](https://github.com/webpack/less-loader)
-
-+ [postcss-cssnext](https://github.com/cssnext/postcss-cssnext)
+- [postcss-cssnext](https://github.com/MoOx/postcss-cssnext) enables new CSS features
 
 
 ### Extra
 
-#### node_modules
+#### node modules
 
-You can install node modules and import them in your JavaScript files, Webpack looks in the local and fffast node_modules folder.
+You can install node modules and import them in your JavaScript files.
+fffast also looks in the local /node_module folder when you import.
+
+(React, React-DOM and Lodash are preinstalled)
