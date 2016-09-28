@@ -59,13 +59,13 @@ index.html
 #### Creating your own ./src folder
 
 
-- **js/script.js**
-- **css/style.css**
-- **index.html**
+- js/script.js
+- css/style.css
+- index.html
 
 are required, the rest is optional
 
-run the `fffast` command in the folder
+run the `fffast` command in the root folder
 
 ## Running fffast
 
@@ -87,15 +87,15 @@ to serve and watch the **./src** folder with [webpack-dev-server](https://github
 
 [ES6](http://exploringjs.com/) and beyond with [Babel](https://github.com/babel/babel)
 
-- [stage 0](https://babeljs.io/docs/usage/experimental/) features are enabled
-- [react]()
-- [babel-plugin-lodash]()
+- [stage 0](http://babeljs.io/docs/plugins/preset-stage-0/) features are enabled
+- [react](http://babeljs.io/docs/plugins/preset-react/)
+- [babel-plugin-lodash](https://github.com/lodash/babel-plugin-lodash)
 
 #### Linting
 
-if there is a [.eslintrc](http://eslint.org/docs/user-guide/configuring.html), the files are linted using [ESLint](https://github.com/eslint/eslint)
+if there is a [.eslintrc](http://eslint.org/docs/user-guide/configuring.html) file present, the files are linted using [ESLint](https://github.com/eslint/eslint)
 
-You can use the [.eslintrc](template/.eslintrc) file the `fffast init` command copies
+You can use the [.eslintrc](template/.eslintrc) file in the [template](/template) folder
 
 - [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react) linting rules are available
 
