@@ -1,5 +1,5 @@
 
-# FFFAST (2.0.1)
+# FFFAST (2.0.2)
 
 > create and watch a webtech experimentation folder
 
@@ -115,4 +115,4 @@ Following postcss plugin is used:
 You can install node modules and import them in your JavaScript files.
 fffast also looks in the local /node_module folder when you import.
 
-(React, React-DOM and Lodash are preinstalled)
+(React, React-DOM, React-Router (v4) and Lodash are preinstalled)
