@@ -7,6 +7,8 @@ import fs from 'fs';
 
 let port = 3000;
 
+let publicPath = `/`;
+
 let config = {
 
   entry: [
@@ -31,7 +33,8 @@ let config = {
   },
 
   output: {
-    filename: `js/[name].[hash].js`
+    filename: `js/[name].[hash].js`,
+    publicPath
   },
 
   devServer: {
