@@ -76,7 +76,7 @@ to serve and watch the **./src** folder with [webpack-dev-server](https://github
 
 `fffast b / fffast build`
 
- creates an optimized **./dist** folder and runs it with [http-server](https://github.com/indexzero/http-server)
+ creates an optimized **./dist** folder and runs it with [lite-server](https://github.com/johnpapa/lite-server)
 
  (you can use `fffast s` / `fffast serve` to serve the **./dist** folder)
 
