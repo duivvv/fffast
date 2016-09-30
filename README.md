@@ -1,5 +1,4 @@
-
-# FFFAST (2.1.1)
+# FFFAST [![npm version](https://badge.fury.io/js/fffast.svg)](https://badge.fury.io/js/fffast)
 
 > create and watch a webtech experimentation folder
 
