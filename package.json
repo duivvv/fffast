@@ -1,6 +1,6 @@
 {
   "name": "fffast",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "fffast basic ES6 and postcss experimentation folder without all the node_modules hassle",
   "main": "./dist/index.js",
   "scripts": {
@@ -40,6 +40,8 @@
     "glob": "^7.1.0",
     "html-loader": "^0.4.4",
     "html-webpack-plugin": "^2.22.0",
+    "lite-server": "^2.2.2",
+    "lodash": "^4.16.2",
     "mkdirp": "^0.5.1",
     "postcss-cssnext": "^2.8.0",
     "postcss-loader": "^0.13.0",
@@ -52,7 +54,6 @@
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^2.1.0-beta.24",
-    "lite-server": "^2.2.2",
     "webpack-config-htmls": "^1.0.1",
     "webpack-dev-server": "2.1.0-beta.5"
   }
