@@ -1,6 +1,6 @@
 {
   "name": "fffast",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "fffast basic ES6 and postcss experimentation folder without all the node_modules hassle",
   "main": "./dist/index.js",
   "scripts": {
@@ -8,8 +8,7 @@
     "prepublish": "npm run build",
     "lint": "eslint src *.js",
     "build": "babel src --out-dir dist",
-    "development": "babel src --out-dir dist --watch",
-    "server": "lite-server -h"
+    "development": "babel src --out-dir dist --watch"
   },
   "author": "Geoffrey Dhuyvetters <geoffrey.dhuyvetters@gmail.com> (http://landlocked.herokuapp.com/)",
   "license": "MIT",
