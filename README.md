@@ -1,4 +1,7 @@
-# FFFAST [![npm version](https://badge.fury.io/js/fffast.svg)](https://badge.fury.io/js/fffast)
+# FFFAST
+
+[![npm version](https://badge.fury.io/js/fffast.svg)](https://badge.fury.io/js/fffast)
+[![dependencies Status](https://david-dm.org/duivvv/fffast/status.svg)](https://david-dm.org/duivvv/fffast)
 
 > create and watch a webtech experimentation folder
 
