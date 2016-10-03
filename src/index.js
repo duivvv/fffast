@@ -1,13 +1,12 @@
 #!/usr/bin/env node
-// import fs from 'fs-extra';
+
 import program from 'commander';
+import pkg from '../package';
 
 import {
   build, run,
   setup, serve
 } from './lib/commands/';
-
-import pkg from '../package';
 
 program
   .version(pkg.version)

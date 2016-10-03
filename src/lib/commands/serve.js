@@ -6,8 +6,6 @@ export default () => {
   const modulePath = path.resolve(__dirname, `../../../`);
   const config = path.join(modulePath, `dist/lib/config/bs-config.js`);
 
-  console.log(config);
-
   spawnCMD(`lite-server -c ${config}`);
 
 };
