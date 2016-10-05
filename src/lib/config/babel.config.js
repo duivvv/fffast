@@ -9,6 +9,7 @@ export default {
     `${base}/babel-preset-react`,
   ],
   plugins: [
-    `${base}/babel-plugin-lodash`
+    `${base}/babel-plugin-lodash`,
+    `${base}/babel-plugin-transform-regenerator`
   ]
 };
