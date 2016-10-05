@@ -1,6 +1,6 @@
 {
   "name": "fffast",
-  "version": "2.1.4",
+  "version": "2.1.5",
   "description": "fffast basic ES6 and postcss experimentation folder without all the node_modules hassle",
   "main": "./dist/index.js",
   "scripts": {

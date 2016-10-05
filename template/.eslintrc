@@ -30,6 +30,7 @@
     "semi": ["error", "always"],
     "no-console": "off",
     "prefer-template": "error",
+    "space-infix-ops": "error",
     "prefer-const": "error",
     "no-array-constructor": "error",
     "no-new-object": "error",
