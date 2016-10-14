@@ -7,7 +7,9 @@ export default () => {
 
   const modulePath = path.resolve(__dirname, `../../../`);
 
-  fs.copySync(`${modulePath}/template`, `./src`);
+  fs.copySync(`${modulePath}/template/src`, `./src`);
+  fs.copySync(`${modulePath}/template/config`, `./`);
+
   run();
 
 };

@@ -114,7 +114,10 @@ try {
   console.log();
 }
 
-const {plugins, entry} = require(`webpack-config-htmls`)();
+const {plugins, entry} = require(`webpack-config-htmls`)({
+  base: `./src`
+});
+
 config.entry = [...config.entry, ...entry];
 config.plugins = [...config.plugins, ...plugins];
 

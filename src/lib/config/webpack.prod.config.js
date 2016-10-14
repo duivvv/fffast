@@ -113,7 +113,9 @@ try {
   console.log();
 }
 
-const {plugins} = require(`webpack-config-htmls`)();
+const {plugins} = require(`webpack-config-htmls`)({
+  base: `./src`
+});
 config.plugins = [...config.plugins, ...plugins];
 
 module.exports = config;
