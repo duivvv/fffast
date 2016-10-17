@@ -1,6 +1,6 @@
 {
   "name": "fffast",
-  "version": "2.1.7",
+  "version": "2.2.0",
   "description": "fffast basic ES6 and postcss experimentation folder without all the node_modules hassle",
   "main": "./dist/index.js",
   "scripts": {
@@ -21,7 +21,6 @@
   },
   "dependencies": {
     "babel-core": "^6.17.0",
-    "babel-eslint": "^7.0.0",
     "babel-loader": "^6.2.5",
     "babel-plugin-lodash": "^3.2.9",
     "babel-plugin-transform-react-jsx-source": "^6.9.0",
@@ -34,12 +33,11 @@
     "css-loader": "^0.25.0",
     "eslint": "^3.5.0",
     "eslint-loader": "^1.5.0",
-    "eslint-plugin-babel": "^3.3.0",
-    "eslint-plugin-react": "^6.3.0",
     "extract-text-webpack-plugin": "^2.0.0-beta.4",
     "file-loader": "^0.9.0",
     "fs-extra": "^0.30.0",
     "glob": "^7.1.0",
+    "global": "^4.3.1",
     "html-loader": "^0.4.4",
     "html-webpack-plugin": "^2.22.0",
     "lite-server": "^2.2.2",
@@ -62,6 +60,7 @@
   },
   "devDependencies": {
     "babel-cli": "^6.16.0",
-    "babel-core": "^6.17.0"
+    "babel-core": "^6.17.0",
+    "eslint-config-devine": "^1.0.2"
   }
 }
