@@ -5,11 +5,11 @@ import path from 'path';
 
 import fs from 'fs';
 
-let port = 3000;
+const port = 3000;
 
-let publicPath = `/`;
+const publicPath = `/`;
 
-let config = {
+const config = {
 
   entry: [
     require.resolve(`react-dev-utils/webpackHotDevClient`),
@@ -103,7 +103,7 @@ let config = {
 };
 
 try {
-  fs.statSync(`./src/.eslintrc`);
+  fs.statSync(`./.eslintrc`);
   config.module.rules.push({
     test: /\.(jsx?)$/,
     enforce: `pre`,

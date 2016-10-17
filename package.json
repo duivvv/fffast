@@ -56,11 +56,11 @@
     "url-loader": "^0.5.7",
     "webpack": "^2.1.0-beta.25",
     "webpack-config-htmls": "^1.0.1",
-    "webpack-dev-server": "2.1.0-beta.5"
+    "webpack-dev-server": "2.1.0-beta.5",
+    "eslint-config-devine": "^1.0.2"
   },
   "devDependencies": {
     "babel-cli": "^6.16.0",
-    "babel-core": "^6.17.0",
-    "eslint-config-devine": "^1.0.2"
+    "babel-core": "^6.17.0"
   }
 }

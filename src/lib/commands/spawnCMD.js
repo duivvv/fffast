@@ -12,6 +12,6 @@ export default cmds => {
   cmds.shift();
   const args = cmds;
 
-  return spawn(cmd, args, { stdio: `inherit` });
+  return spawn(cmd, args, {stdio: `inherit`});
 
 };

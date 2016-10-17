@@ -7,9 +7,9 @@ const ExtractCSS = new ExtractTextPlugin(`css/style.css`);
 
 import babelc from './babel.config';
 
-let publicPath = `/`;
+const publicPath = `/`;
 
-let config = {
+const config = {
 
   entry: [
     `./src/js/script.js`,
@@ -102,7 +102,7 @@ let config = {
 };
 
 try {
-  fs.statSync(`./src/.eslintrc`);
+  fs.statSync(`./.eslintrc`);
   config.module.rules.push({
     test: /\.(jsx?)$/,
     enforce: `pre`,
