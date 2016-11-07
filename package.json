@@ -39,7 +39,7 @@
     "glob": "^7.1.0",
     "global": "^4.3.1",
     "html-loader": "^0.4.4",
-    "html-webpack-plugin": "^2.22.0",
+    "html-webpack-plugin": "^2.24.1",
     "lite-server": "^2.2.2",
     "lodash": "^4.16.2",
     "mkdirp": "^0.5.1",
